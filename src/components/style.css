@@ -1,0 +1,43 @@
+.navbar{
+    margin: 10px;
+}
+.yes{
+    padding: 10px;
+    text-decoration: none;
+    /* border: 1px solid red; */
+    background-color: rgb(159, 159, 235);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    color: white;
+}
+.links{
+    margin: 10px;
+    /* border: 1px solid red; */
+    /* display: inline; */
+   text-decoration: none;
+   color: black;
+}
+.employee_card{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: inline-table;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.list_container{
+    display: grid;
+    grid-template-columns: repeat(4,9rem);
+    grid-gap: 200px;
+    margin-left: 150px;
+
+
+}
+
+.user_details{
+    border: 1px solid red;
+    width: 20%;
+    margin: auto;
+    height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
