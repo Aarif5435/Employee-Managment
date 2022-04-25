@@ -38,6 +38,14 @@
     border: 1px solid red;
     width: 20%;
     margin: auto;
-    height: 500px;
+    height: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.links img{
+    width: 100%;
+}
+
+.user_details img{
+    width: 100%;
 }

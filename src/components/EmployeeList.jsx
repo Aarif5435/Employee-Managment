@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import "./style.css"
 export const EmployeeList = () => {
   const [emData, setEmData] = useState([]);
   // const { id } = useParams();

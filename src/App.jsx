@@ -10,6 +10,7 @@ import { Logout } from "./components/Logout";
 import { Route, Router, Routes } from "react-router-dom";
 import "./App.css"
 import {useEffect} from "react"
+import { PrivateCoponents } from "./components/PrivateComponent";
 
 function App() {
 
@@ -22,9 +23,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/employee" element={<EmployeeList/>}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/admin" element={
+          <PrivateCoponents>
+            <Admin />
+          </PrivateCoponents>
+        }></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/employee/:id" element={<EmployeeDetails/>}></Route>
+        <Route path="/employee/:id" element={
+          <PrivateCoponents>
+            <EmployeeDetails/>
+          </PrivateCoponents>
+        }></Route>
         
          </Routes>
       

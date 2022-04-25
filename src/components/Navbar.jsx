@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/Auth";
+import { LogoutContext } from "./Logout";
 import "./style.css"
 
 export const Navbar = () => {
+  const {isAuth, setIsAuth} = useContext(AuthContext);
+  const {handleLogout} = useContext(LogoutContext);
 
   return (
     <div className="navbar">
@@ -15,13 +20,15 @@ export const Navbar = () => {
         Admin
       </Link>
       {/* Show Either logout or login based on auth context. DO NOT show both */}
-      <Link className="nav-logout yes" to="/logout">
+      {isAuth ? <Link className="nav-logout yes" to="/login">
         Logout
-      </Link>
+      </Link> :  
+      <Link className="nav-login yes" to="/login" >
+        Login  
+      </Link> }
+      
 
-      <Link className="nav-login yes" to="/login">
-        Login
-      </Link>
+      
     </div>
   );
 };

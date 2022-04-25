@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { TotalContext } from "../context/TotalNew";
 import "./style.css"
 
 export const Home = () => {
@@ -16,7 +17,8 @@ export const Home = () => {
   const [totalData, setTotalData] = useState(0);
   const [terminated , setTerminated] = useState(0);
   const [promoted , setPromoted] = useState(0);
-  const [newe, setNewe] = useState(0)
+  const [newe, setNewe] = useState(0);
+  const {total} = useContext(TotalContext)
 
   useEffect(() => {
     const total = async () => {
@@ -44,7 +46,7 @@ export const Home = () => {
           Total Promoted:- <span className="total_promoted">{promoted}</span>
         </div>
         <div>
-          Total New:- <span className="total_new">{newe}</span>
+          Total New:- <span className="total_new">{total}</span>
         </div>
       </div>
     </>

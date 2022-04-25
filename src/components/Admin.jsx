@@ -1,45 +1,60 @@
+import { useContext, useState } from "react";
+import { TotalContext } from "../context/TotalNew";
+
 export const Admin = () => {
+  const [formData,setFormData] = useState([]);
+  const [newe, setNewe] = useState(0);
+  const {handleTotal} = useContext(TotalContext)
+
+  const handle = (e)=>{
+    const {name,value} = e.target;
+    setFormData({
+        ...formData,
+        [name] : value,
+    })
+  }
 
   const onsubmit = (e)=>{
-     e.preventDefault();
+    e.preventDefault();
      fetch('http://localhost:8080/employee',{
       method : "POST",
             headers: {
                "Content-Type": "application/json",
              },
-             body: JSON.stringify(data)
-     })
+             body: JSON.stringify(formData)
+     });
+     handleTotal(1);
   }
   return (
-    <form className="createEmployee">
-      <input type="text" placeholder="Employee Name" name="employee_name" />
-      <input type="text" placeholder="Employee id" name="employee_id" />
-      <select name="title">
+    <form className="createEmployee" onSubmit={onsubmit}>
+      <input onChange={handle} type="text" placeholder="Employee Name" name="employee_name" /><br />
+      <input onChange={handle} type="text" placeholder="Employee id" name="employee_id" /><br />
+      <select onChange={handle} name="title"><br />
         <option value="intern">Intern</option>
         <option value="Jr Software Developer">Jr Software Developer</option>
         <option value="Sr Software Developer">Sr Software Developer</option>
         <option value="Team Lead">Team Lead</option>
-      </select>
-      <input type="number" placeholder="Salary" name="salary" />
-      <input type="text" placeholder="Image" name="image" />
-      <input type="text" placeholder="User Name" name="username" />
-      <input type="password" placeholder="Password" name="password" />
+      </select><br />
+      <input onChange={handle} type="number" placeholder="Salary" name="salary" /><br />
+      <input onChange={handle} type="text" placeholder="Image" name="image" /><br />
+      <input onChange={handle} type="text" placeholder="User Name" name="username" /><br />
+      <input onChange={handle} type="password" placeholder="Password" name="password" /><br />
       <input
         type="text"
         placeholder="Enter tasks separated by commas"
         name="tasks"
-      />
-      <select name="status" id="status">
+      /><br />
+      <select onChange={handle} name="status" id="status">
         <option value="">Select Status</option>
         <option value="terminated">Terminated</option>
         <option value="working">Working</option>
-      </select>
-      <select name="team" id="team">
+      </select><br />
+      <select onChange={handle} name="team" id="team">
         <option value="">Select team</option>
         <option value="frontend">Frontend</option>
         <option value="backend">Backend</option>
         <option value="qa">QA</option>
-      </select>
+      </select><br />
       <input className="createUser" type="submit" value={"submit"} />
     </form>
   );
